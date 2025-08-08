@@ -42,12 +42,15 @@ def data_info(path: Path) -> None:
     """
     csv_path = path / "malicious_phish1.csv"
     data = pd.read_csv(csv_path)
-
+    data["len"] = data["url"].str.len()
     print("\n Dataset Info:")
     data.info()
+
     print("\n URL types:", data["type"].unique())
     print("\n URL type distribution:")
     print(data["type"].value_counts())
+    print("\nURL lenght :")
+    print(data["len"].describe())
 
 
 if __name__ == "__main__":
